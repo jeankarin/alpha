@@ -5,11 +5,14 @@ def lecturaPalabra(lectura):
     for line in lineas:
         palabras.append(line)
 
-    choice = random.randint(0,len(palabras)-1)
+    eleccion = random.randint(0,len(palabras)-1)
+    mipalabra = palabras[eleccion]
+    return mipalabra
 
 def main():
     # Escoger palabra aleatoria
     palabra = lecturaPalabra('palabras.txt')
+    print(palabra)
 
 
 if __name__ == "__main__":
