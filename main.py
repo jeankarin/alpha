@@ -1,7 +1,8 @@
+# Leemos diccionario y escogemos palabra
 def lecturaPalabra(lectura):
     palabras = []
 
-    with open('lectura', 'r') as file:
+    with open(lectura, 'r') as file:
         palabras = file.readlines()
 
     eleccion = random.randint(0,len(palabras)-1)
