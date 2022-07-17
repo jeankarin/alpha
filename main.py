@@ -1,9 +1,8 @@
 def lecturaPalabra(lectura):
     palabras = []
-    fichero = open(lectura,'r')
-    lineas = csv.reader(fichero)
-    for line in lineas:
-        palabras.append(line)
+
+    with open('lectura', 'r') as file:
+        palabras = file.readlines()
 
     eleccion = random.randint(0,len(palabras)-1)
     mipalabra = palabras[eleccion]
@@ -16,6 +15,5 @@ def main():
 
 
 if __name__ == "__main__":
-    import csv
     import random
     main()
