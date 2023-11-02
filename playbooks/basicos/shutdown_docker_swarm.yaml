@@ -1,0 +1,8 @@
+---
+# Playbook update ubuntu
+- hosts: all
+  remote_user: jahorrillo
+  become: yes
+  tasks:
+    - name: Apagado incondicional de la máquina
+      community.general.shutdown:
