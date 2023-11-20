@@ -1,6 +1,6 @@
 ---
 # Playbook update ubuntu
-- hosts: DockerSwarm
+- hosts: all
   remote_user: jahorrillo
   become: yes
   tasks:
