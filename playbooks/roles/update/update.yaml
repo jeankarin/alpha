@@ -1,0 +1,5 @@
+- name: Update ubuntu servers
+  hosts: all
+  become: true
+  roles:
+    - ubuntu
