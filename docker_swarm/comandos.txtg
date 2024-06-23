@@ -1,0 +1,5 @@
+docker service ls --> Mostramos los servicios que hay.
+
+docker service ps <nombre_servicio> --> Mostramos más detalles del servicio indicado.
+
+
