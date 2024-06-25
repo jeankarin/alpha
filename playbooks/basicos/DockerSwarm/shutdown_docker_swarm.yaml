@@ -1,7 +1,7 @@
 ---
 # Playbook update ubuntu
 - hosts: DockerSwarm
-  remote_user: jahorrillo
+  remote_user: adminsrv
   become: yes
   tasks:
     - name: Apagado incondicional de la máquina
