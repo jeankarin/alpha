@@ -16,6 +16,6 @@
         dest: /opt/stacks/docker-compose.yaml
     
     - name: Launch MariaDB container using Docker Compose
-      command: docker-compose up -d
+      command: docker stack deploy -c docker-compose.yaml mariadb_stack
       args:
         chdir: /opt/stacks
