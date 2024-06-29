@@ -1,6 +1,6 @@
 ---
 - name: Deploy MariadDB
-  hosts: esbcnsrv002
+  hosts: esbcnsrv001
   become: yes
 
   tasks:
