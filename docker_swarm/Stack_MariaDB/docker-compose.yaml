@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mariadb:latest
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.hostname == esbcnsrv002]
+      restart_policy:
+        condition: on-failure
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - databases
+    ports:
+      - "8001:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: "Inicio15"
+
+volumes:
+  db_data:
