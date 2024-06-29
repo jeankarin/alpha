@@ -1,6 +1,6 @@
 ---
 - name: Deploy MariadDB
-  hosts: dockerswarm
+  hosts: esbcnsrv002
   become: yes
 
   tasks:
