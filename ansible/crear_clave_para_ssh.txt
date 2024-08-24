@@ -1,0 +1,33 @@
+1. Generar una clave SSH
+ssh-keygen -t rsa -b 4096 -C "tu_email@example.com"
+
+-t rsa: Indica el tipo de clave que se generará (RSA en este caso).
+-b 4096: Especifica el tamaño en bits de la clave.
+-C: Añade un comentario (normalmente, tu email).
+
+2. Copiar la clave pública a los servidores remotos
+ssh-copy-id -i ~/.ssh/id_rsa.pub usuario@servidor_remoto
+
+3. Verificar la Conexión SSH
+ssh usuario@servidor_remoto
+
+4. Configurar Ansible
+Ejemplo inventario:
+[webservers]
+servidor1 ansible_user=usuario
+servidor2 ansible_user=usuario
+
+[dbservers]
+servidor3 ansible_user=usuario
+
+O en ansible.cfg:
+[defaults]
+inventory = ./inventario
+private_key_file = ~/.ssh/id_rsa
+
+5. Probar la Conexión desde Ansible
+ansible all -m ping -i inventario
+
+## Añadir usuario a sudoers:
+echo 'admin ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/admin
+

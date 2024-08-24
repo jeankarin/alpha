@@ -1,0 +1,11 @@
+[Unit]
+Description=Inicio semaphore
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/start.sh
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=default.target
