@@ -1,0 +1,47 @@
+---
+- hosts: DockerSwarm
+  become: yes
+  vars:
+    new_host: |
+      10.0.2.6 esbcnsrvdockerswarm01
+      10.0.2.7 esbcnsrvdockerswarm02
+  tasks:
+    - name: Add new host to /etc/hosts
+      blockinfile:
+        path: /etc/hosts
+        block: |
+          {{ new_host }}
+  
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: Get Ubuntu codename
+      command: lsb_release -cs
+      register: release_name
+      changed_when: false
+    - name: Add Docker repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ release_name.stdout }} stable
+        state: present
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+    - name: Start and enable Docker service
+      service:
+        name: docker
+        enabled: yes
+        state: started
+    - name: Add current user to Docker group
+      command: usermod -aG docker {{ ansible_user_id }}
+      become: yes
+      changed_when: true
+    - name: Add another user to Docker group
+      command: usermod -aG docker adminsrv
+      become: yes
+      changed_when: true
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
