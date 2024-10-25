@@ -1,0 +1,5 @@
+# Ejecutar de la siguiente manera:
+ansible-playbook playbook.yml -e "hosts=<nombre_de_host> -e "FILE=/path/to/your/file"
+
+# Ejemplo:
+ansible-playbook playbook.yml -e "hosts=DockerSwarm -e "FILE=/etc/apt/apt.conf.d/20auto-upgrades"

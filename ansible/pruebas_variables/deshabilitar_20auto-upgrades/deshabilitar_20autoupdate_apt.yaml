@@ -1,0 +1,9 @@
+---
+- name: Ejecutar comando sed en un archivo
+  hosts: "{{ hosts }}"
+  become: yes
+  tasks:
+    - name: Ejecutar comando sed
+      command: sed -i 's/"1"/"0"/g' "{{ item }}"
+      with_items:
+        - "{{ FILE }}"
