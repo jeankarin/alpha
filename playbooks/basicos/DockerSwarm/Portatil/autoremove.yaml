@@ -1,6 +1,6 @@
 ---
 # Playbook update ubuntu
-- hosts: DockerSwarm
+- hosts: dockerswarm
   remote_user: adminsrv
   become: yes
   tasks:
