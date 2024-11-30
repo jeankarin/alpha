@@ -1,0 +1,18 @@
+---
+- name: Disable autoupdate en apt-get
+  hosts: "{{ hosts }}"
+  become: yes
+  tasks:
+    - name: Aseguramos que existe el fichero y modificamos APT::Periodic::Update-Package-Lists
+      lineinfile:
+        path: /etc/apt/apt.conf.d/20auto-upgrades
+        regexp: '^APT::Periodic::Update-Package-Lists\s*"1";'
+        line: 'APT::Periodic::Update-Package-Lists "0";'
+        state: present
+
+    - name: Aseguramos que existe el fichero y modificamos APT::Periodic::Unattended-Upgrade
+      lineinfile:
+        path: /etc/apt/apt.conf.d/20auto-upgrades
+        regexp: '^APT::Periodic::Unattended-Upgrade\s*"1";'
+        line: 'APT::Periodic::Unattended-Upgrade "0";'
+        state: present
