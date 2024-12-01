@@ -1,0 +1,18 @@
+---
+all:
+  vars:
+    ansible_user: adminsrv
+    ansible_ssh_private_key_file: /home/adminsrv/.ssh/id_rsa
+  children:
+    docker_swarm:
+      hosts:
+        swarm-master:
+          ansible_host: 10.0.2.5
+        swarm-node1:
+          ansible_host: 10.0.2.6
+    kubernetes:
+      hosts:
+        kube-master:
+          ansible_host: 10.0.2.8
+        kube-node1:
+          ansible_host: 10.0.2.7
